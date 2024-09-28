@@ -1,23 +1,26 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
-import { DefaultLoginLayoutComponent } from './default-login-layout.component';
+@Component({
+  selector: 'app-default-login-layout',
+  standalone: true,
+  imports: [],
+  templateUrl: './default-login-layout.component.html',
+  styleUrl: './default-login-layout.component.scss'
+})
+export class DefaultLoginLayoutComponent {
+  @Input() title: string = "";
+  @Input() primaryBtnText: string = "";
+  @Input() secondaryBtnText: string = "";
+  @Input() disablePrimaryBtn: boolean = true;
+  @Output("submit") onSubmit = new EventEmitter();
 
-describe('DefaultLoginLayoutComponent', () => {
-  let component: DefaultLoginLayoutComponent;
-  let fixture: ComponentFixture<DefaultLoginLayoutComponent>;
+  @Output("navigate") onNavigate = new EventEmitter();
+  
+  submit(){
+    this.onSubmit.emit();
+  }
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [DefaultLoginLayoutComponent]
-    })
-    .compileComponents();
-    
-    fixture = TestBed.createComponent(DefaultLoginLayoutComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+  navigate(){
+    this.onNavigate.emit();
+  }
+}

@@ -1,5 +1,5 @@
-import { Component, forwardRef, Input } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
+import { Component, Input, forwardRef } from '@angular/core';
+import { ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
 
 type InputTypes = "text" | "email" | "password"
 
@@ -19,8 +19,7 @@ type InputTypes = "text" | "email" | "password"
   templateUrl: './primary-input.component.html',
   styleUrl: './primary-input.component.scss'
 })
-export class PrimaryInputComponent implements ControlValueAccessor{
-  
+export class PrimaryInputComponent implements ControlValueAccessor {
   @Input() type: InputTypes = "text";
   @Input() placeholder: string = "";
   @Input() label: string = "";
